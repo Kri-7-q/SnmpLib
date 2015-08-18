@@ -1382,7 +1382,7 @@
 #else /* ! NETSNMP_USE_OPENSSL */
 
 /* define if you are using the MD5 code ...*/
-//#define NETSNMP_USE_INTERNAL_MD5 1
+#define NETSNMP_USE_INTERNAL_MD5 1
 
 #endif /* ! NETSNMP_USE_OPENSSL */
 
