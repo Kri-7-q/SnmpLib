@@ -80,7 +80,7 @@ SOURCES += snmplib/snmp_client.c \
            #snmplib/openssl/openssl_set_key.c \
            #snmplib/openssl/openssl_sha1.c \
            snmplib/getopt.c
-win32 {
+win32: {
 SOURCES += \
     snmplib/closedir.c \
     snmplib/gettimeofday.c \
@@ -96,13 +96,13 @@ SOURCES += \
     snmplib/winpipe.c \
     snmplib/strtok_r.c
 }
-mac {
+unix: {
 SOURCES += \
            snmplib/text_utils.c \
            snmplib/cert_util.c \
-           snmplib/pkcs.c \ # not win ????????????????????????????????? maybe unix
+           snmplib/pkcs.c \
            snmplib/dir_utils.c \
-           snmplib/snprintf.c \    # not win ?????????????????????? maybe unix
+           snmplib/snprintf.c \
            snmplib/file_utils.c
 }
 
@@ -116,7 +116,6 @@ HEADERS += \
     include/net-snmp/library/container.h \
     include/net-snmp/library/data_list.h \
     include/net-snmp/library/default_store.h \
-    #include/net-snmp/library/factory.h \    # not win
     include/net-snmp/library/fd_event_manager.h \
     include/net-snmp/library/getopt.h \
     include/net-snmp/library/int64.h \
@@ -127,16 +126,13 @@ HEADERS += \
     include/net-snmp/library/mib.h \
     include/net-snmp/library/mt_support.h \
     include/net-snmp/library/oid_stash.h \
-    #include/net-snmp/library/oid.h \        # not win ?
     include/net-snmp/library/parse.h \
     include/net-snmp/library/read_config.h \
     include/net-snmp/library/scapi.h \
     include/net-snmp/library/snmp_alarm.h \
     include/net-snmp/library/snmp_api.h \
-    #include/net-snmp/library/snmp_assert.h \    # not win ?
     include/net-snmp/library/snmp_client.h \
     include/net-snmp/library/snmp_debug.h \
-    #include/net-snmp/library/snmp_impl.h \      # not win
     include/net-snmp/library/snmp_logging.h \
     include/net-snmp/library/snmp_parse_args.h \
     include/net-snmp/library/snmp_service.h \
@@ -145,8 +141,6 @@ HEADERS += \
     include/net-snmp/library/snmpv3.h \
     include/net-snmp/library/system.h \
     include/net-snmp/library/tools.h \
-    #include/net-snmp/library/transform_oids.h \ # not win
-    #include/net-snmp/library/types.h \          # not win
     include/net-snmp/library/snmpSocketBaseDomain.h \
     include/net-snmp/library/snmpTCPBaseDomain.h \
     include/net-snmp/library/snmpUDPBaseDomain.h \
@@ -163,11 +157,17 @@ HEADERS += \
     include/net-snmp/library/ucd-compat.h \
     include/net-snmp/library/vcam.h \
     include/net-snmp/library/snmp-transport.h
-win32 {
+win32: {
 HEADERS += include/net-snmp/library/strtok_r.h
 }
-mac {
+unix: {
 HEADERS += \
+    include/net-snmp/library/transform_oids.h \
+    include/net-snmp/library/types.h \
+    include/net-snmp/library/snmp_impl.h \
+    include/net-snmp/library/snmp_assert.h \
+    include/net-snmp/library/oid.h \
+    include/net-snmp/library/factory.h \
     include/net-snmp/library/cert_util.h \
     include/net-snmp/library/dir_utils.h \
     include/net-snmp/library/file_utils.h \
