@@ -1332,7 +1332,7 @@
 
 /* default location to look for mibs to load using the above tokens and/or
    those in the MIBS envrionment variable */
-#define NETSNMP_DEFAULT_MIBDIRS "$HOME/.snmp/mibs:/Users/Christian/net-snmp-mac/share/snmp/mibs"
+//#define NETSNMP_DEFAULT_MIBDIRS "$HOME/.snmp/mibs:/Users/Christian/net-snmp-mac/share/snmp/mibs"
 
 /* default mib files to load, specified by path. */
 /* #undef NETSNMP_DEFAULT_MIBFILES */
