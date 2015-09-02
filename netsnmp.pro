@@ -10,7 +10,14 @@ TARGET = netsnmp
 TEMPLATE = lib
 CONFIG += staticlib
 
-DEFINES += OPENSSL_NO_INLINE_ASM NETSNMP_DEFAULT_MIBDIRS=\\\"$$PWD/mibs\\\"
+DEFINES += OPENSSL_NO_INLINE_ASM \
+            NETSNMP_DEFAULT_MIBDIRS=\\\"$$PWD/mibs\\\"
+
+# Disable warnings
+*clang*|*g++*|*llvm* {
+    QMAKE_CFLAGS += -w
+    QMAKE_CXXFLAGS += -w
+}
 
 INCLUDEPATH += $$PWD/include \
                 $$PWD/snmplib
@@ -96,6 +103,11 @@ SOURCES += \
     snmplib/strtoull.c \
     snmplib/winpipe.c \
     snmplib/strtok_r.c
+}
+linux: {
+SOURCES += \
+    snmplib/strlcat.c \
+    snmplib/strlcpy.c \
 }
 unix: {
 SOURCES += \
