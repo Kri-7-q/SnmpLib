@@ -49,6 +49,15 @@
 
 #define config_warning(x)
 
+/* Android has no data type 'in_addr_t'. */
+#ifdef OPERATING_SYS_ANDROID
+typedef unsigned int    in_addr_t;
+//typedef struct {
+//    unsigned long fds_bits[1024 / (8 * sizeof(long))];
+//} fd_set;
+#include <sys/select.h>
+#endif
+
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
@@ -1141,7 +1150,9 @@
 #define HAVE_SYS_SWAP_H 1
 
 /* Define to 1 if you have the <sys/sysctl.h> header file. */
+#ifndef OPERATING_SYS_ANDROID
 #define HAVE_SYS_SYSCTL_H 1
+#endif
 
 /* Define to 1 if you have the <sys/sysget.h> header file. */
 /* #undef HAVE_SYS_SYSGET_H */
